@@ -1,21 +1,949 @@
-MichaelMcGillApps
-Home
-Privacy Policy
-Terms of Service
-Support
-Professional iOS Applications
-High-quality, thoughtfully designed apps that solve real problems
-⛽
-PropaneScout
-Find Cheap Propane Near You
-Find the cheapest propane near you with community-reported prices. Compare prices for tank exchanges, refills, and new tanks. Features an interactive map, community leaderboard, and price sorting. Built with SwiftUI, Firebase, Google Sign-In, and MapKit.
-⏱️
-Custom Interval Workout Timer
-The Ultimate Workout Timer
-The ultimate workout timer for any training style — Tabata, EMOM, AMRAP, HIIT, Boxing, and fully custom intervals. Features timer chains, preset library, workout history, Apple Watch companion, and Apple Health integration.
-🎵
-Alarmony
-Wake Up to Your Favorite Music
-Wake up to your favorite music with a smart alarm clock. Features customizable alarm settings and music integration. Start your day right with Alarmony's intuitive interface and reliable performance.
-© 2026 MichaelMcGillApps. All rights reserved.
-Designed with precision for iOS excellence.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MichaelMcGillApps - Professional iOS Applications">
+    <meta name="keywords" content="iOS apps, PropaneScout, Workout Timer, Alarmony">
+    <title>MichaelMcGillApps - iOS Applications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #06b6d4;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            border-radius: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #06b6d4;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .app-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .app-card:hover::before {
+            left: 100%;
+        }
+
+        .app-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(14, 165, 233, 0.1) 100%);
+        }
+
+        .app-card.propane .app-icon {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(14, 165, 233, 0.2) 100%);
+        }
+
+        .app-card.timer .app-icon {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%);
+        }
+
+        .app-card.alarm .app-icon {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+
+        .app-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .app-card .tagline {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .app-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Legal Pages */
+        .legal-page {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .legal-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-page .last-updated {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-page h2 {
+            font-size: 1.4rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .legal-page h3 {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+        }
+
+        .legal-page p,
+        .legal-page li {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .legal-page ul,
+        .legal-page ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-page li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Support Page */
+        .support-section {
+            margin-bottom: 3rem;
+        }
+
+        .support-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .contact-info a {
+            color: #06b6d4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #0ea5e9;
+            text-decoration: underline;
+        }
+
+        /* FAQ Accordions */
+        .faq-item {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.3) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(6, 182, 212, 0.2);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+        }
+
+        .faq-question h4 {
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            color: #06b6d4;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(15, 23, 42, 0.3);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: #64748b;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #06b6d4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #0ea5e9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(15, 23, 42, 0.98);
+                border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+                padding: 1rem;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0.75rem 0;
+                padding: 0.5rem 0;
+            }
+
+            nav a.active::after {
+                display: none;
+            }
+
+            nav a.active {
+                color: #06b6d4;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .legal-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .legal-page h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            nav a {
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* App-specific accent colors */
+        .propane-accent {
+            color: #06b6d4;
+        }
+
+        .timer-accent {
+            color: #ea580c;
+        }
+
+        .alarm-accent {
+            color: #a855f7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo">MichaelMcGillApps</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#privacy" class="nav-link">Privacy Policy</a>
+                <a href="#terms" class="nav-link">Terms of Service</a>
+                <a href="#support" class="nav-link">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Professional iOS Applications</h1>
+                <p>High-quality, thoughtfully designed apps that solve real problems</p>
+            </div>
+        </section>
+
+        <main>
+            <div class="apps-grid">
+                <!-- PropaneScout -->
+                <div class="app-card propane fade-in">
+                    <div class="app-icon">⛽</div>
+                    <h3>PropaneScout</h3>
+                    <p class="tagline">Find Cheap Propane Near You</p>
+                    <p>Find the cheapest propane near you with community-reported prices. Compare prices for tank exchanges, refills, and new tanks. Features an interactive map, community leaderboard, and price sorting. Built with SwiftUI, Firebase, Google Sign-In, and MapKit.</p>
+                </div>
+
+                <!-- Custom Interval Workout Timer -->
+                <div class="app-card timer fade-in">
+                    <div class="app-icon">⏱️</div>
+                    <h3>Custom Interval Workout Timer</h3>
+                    <p class="tagline">The Ultimate Workout Timer</p>
+                    <p>The ultimate workout timer for any training style — Tabata, EMOM, AMRAP, HIIT, Boxing, and fully custom intervals. Features timer chains, preset library, workout history, Apple Watch companion, and Apple Health integration.</p>
+                </div>
+
+                <!-- Alarmony -->
+                <div class="app-card alarm fade-in">
+                    <div class="app-icon">🎵</div>
+                    <h3>Alarmony</h3>
+                    <p class="tagline">Wake Up to Your Favorite Music</p>
+                    <p>Wake up to your favorite music with a smart alarm clock. Features customizable alarm settings and music integration. Start your day right with Alarmony's intuitive interface and reliable performance.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Privacy Policy Page -->
+    <div id="privacy" class="page">
+        <main class="legal-page fade-in">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: February 26, 2026</p>
+
+            <h2>Introduction</h2>
+            <p>We respect your privacy. This policy describes how our iOS applications collect, use, and protect your information. Please read this policy carefully to understand our privacy practices.</p>
+
+            <h2>Developer Information</h2>
+            <p><strong>Developer:</strong> Michael McGill</p>
+            <p><strong>Contact:</strong> <a href="mailto:mcgillmichael95@gmail.com">mcgillmichael95@gmail.com</a></p>
+
+            <h2>Information We Collect</h2>
+
+            <h3>Custom Interval Workout Timer & Alarmony</h3>
+            <p>These applications do not collect or store any personal information. They do not require account creation or login. All data including timers, presets, and alarms is stored locally on your device only.</p>
+
+            <h3>PropaneScout</h3>
+            <p>PropaneScout collects the following information:</p>
+            <ul>
+                <li><strong>Authentication:</strong> Your name, email address, and user ID through Google Sign-In</li>
+                <li><strong>Location:</strong> Your precise location (with your permission) to show nearby propane prices</li>
+                <li><strong>User-Generated Content:</strong> Price reports, store names, ratings, and other information you choose to submit, stored via Google Firebase</li>
+            </ul>
+
+            <h2>Third-Party Services</h2>
+            <p>Our applications use the following third-party services:</p>
+            <ul>
+                <li><strong>Google AdMob:</strong> For displaying advertisements in all applications</li>
+                <li><strong>Google Firebase:</strong> For storing PropaneScout user data and submissions</li>
+                <li><strong>Google Sign-In:</strong> For PropaneScout authentication</li>
+                <li><strong>Apple MapKit:</strong> For map features in PropaneScout</li>
+            </ul>
+            <p>These third-party services may collect information according to their own privacy policies.</p>
+
+            <h2>Data Storage</h2>
+            <p>All application preferences and settings for Custom Interval Workout Timer and Alarmony are stored locally on your device. PropaneScout additionally stores user-submitted data on Google Firebase servers to enable community features like price reports and leaderboards.</p>
+
+            <h2>Data Sharing</h2>
+            <p>We do not sell or share your personal data with third parties beyond what is necessary for our applications to function. Third-party services listed above may collect and process data according to their own privacy policies.</p>
+
+            <h2>Children's Privacy</h2>
+            <p>Our applications are not directed at children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
+
+            <h2>Data Deletion</h2>
+            <p>To request deletion of your PropaneScout data and account information, please contact us at <a href="mailto:mcgillmichael95@gmail.com">mcgillmichael95@gmail.com</a>. We will process your request within 30 days.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of material changes by updating the "Last Updated" date at the top of this policy.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have questions about this privacy policy or our privacy practices, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:mcgillmichael95@gmail.com">mcgillmichael95@gmail.com</a></p>
+        </main>
+    </div>
+
+    <!-- Terms of Service Page -->
+    <div id="terms" class="page">
+        <main class="legal-page fade-in">
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last Updated: February 26, 2026</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By downloading, installing, and using any MichaelMcGillApps application, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our applications.</p>
+
+            <h2>2. Use of Our Apps</h2>
+            <p>We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, non-commercial purposes. You may not:</p>
+            <ul>
+                <li>Reverse engineer, decompile, or attempt to derive the source code</li>
+                <li>Modify, translate, or create derivative works based on our applications</li>
+                <li>Use the applications for any commercial purpose or for any public display</li>
+                <li>Remove or alter any proprietary notices or labels in the applications</li>
+                <li>Violate any applicable laws or regulations while using the applications</li>
+            </ul>
+
+            <h2>3. Intellectual Property</h2>
+            <p>All content, features, functionality, and code within our applications, including but not limited to text, graphics, logos, images, software, and user interface design, are the exclusive property of Michael McGill. They are protected by copyright and other intellectual property laws. You may not reproduce or use any of this content without express permission from Michael McGill.</p>
+
+            <h2>4. Disclaimer of Warranties</h2>
+            <p>Our applications are provided "as is" and "as available" without warranties of any kind, either express or implied. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not guarantee that the applications will be error-free, uninterrupted, or free of harmful components.</p>
+
+            <h2>5. User-Generated Content (PropaneScout)</h2>
+            <p>PropaneScout allows users to submit prices, store information, and ratings. By submitting content:</p>
+            <ul>
+                <li>You grant MichaelMcGillApps a non-exclusive, royalty-free, worldwide license to use, distribute, and display your submitted content</li>
+                <li>You are responsible for the accuracy and legality of all content you submit</li>
+                <li>We may remove any content that we believe violates these terms or is inappropriate</li>
+                <li>We do not guarantee the accuracy of user-submitted data and are not liable for any losses resulting from reliance on community-reported prices</li>
+            </ul>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>To the fullest extent permitted by law, MichaelMcGillApps shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or loss of profits or revenue, whether incurred directly or indirectly, arising from your use of or inability to use the applications, even if we have been advised of the possibility of such damages.</p>
+
+            <h2>7. Changes to Terms</h2>
+            <p>We may modify these Terms of Service at any time. Changes will be effective immediately upon posting. Your continued use of the applications following the posting of revised terms means that you accept and agree to the changes.</p>
+
+            <h2>8. Contact</h2>
+            <p>If you have any questions about these Terms of Service, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:mcgillmichael95@gmail.com">mcgillmichael95@gmail.com</a></p>
+        </main>
+    </div>
+
+    <!-- Support Page -->
+    <div id="support" class="page">
+        <main>
+            <div class="support-section fade-in">
+                <h2>Contact & Support</h2>
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Have a question or need help? We're here to assist you.</p>
+                    <p style="margin-top: 1rem; font-size: 1.1rem;">
+                        <strong>Email:</strong> <a href="mailto:mcgillmichael95@gmail.com">mcgillmichael95@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- PropaneScout FAQ -->
+            <div class="support-section fade-in">
+                <h2>PropaneScout FAQ</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do I need to sign in to use PropaneScout?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Google Sign-In is optional. You can browse and view propane prices near you without creating an account. However, signing in allows you to report prices and appear on the community leaderboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Why does the app need my location?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Location access is used to find propane prices near you on the interactive map. You can deny location permission and browse by searching for specific stores manually. All location data is used only within the app and is not sold to third parties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I report a price?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To report a price: Tap the "+" button, select the store location, enter the price you paid, select the propane type (tank exchange, refill, or new tank), and submit. Your report helps the community find the best deals!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workout Timer FAQ -->
+            <div class="support-section fade-in">
+                <h2>Custom Interval Workout Timer FAQ</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I create a custom timer?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tap the "Create Timer" or "+" button on the home screen. Add intervals by entering the duration, adding a custom name, and selecting a color. You can chain multiple timers together for complex multi-part workouts. Save your timers for future use.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Does it work with Apple Watch?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! A dedicated Apple Watch companion app is included with your purchase. You can start and control workouts directly from your wrist, making it perfect for tracking intervals during training.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Does it sync with Apple Health?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, completed workouts can be logged to Apple Health automatically. Your workout data integrates seamlessly with your health and fitness records.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alarmony FAQ -->
+            <div class="support-section fade-in">
+                <h2>Alarmony FAQ</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I set an alarm with my music?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Create a new alarm, set your desired wake-up time, and tap on the alarm sound selector. Choose "Music" and select a song from your device's music library. Your chosen song will play at the alarm time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I use Spotify or Apple Music?</h4>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The app works with your local music library on your device, including songs purchased from iTunes or synced to your iPhone. Downloaded songs from Spotify or Apple Music can be used as alarm sounds.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MichaelMcGillApps. All rights reserved.</p>
+        <p>Designed with precision for iOS excellence.</p>
+    </footer>
+
+    <script>
+        // Hash-based routing
+        const pages = ['home', 'privacy', 'terms', 'support'];
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navMenu = document.getElementById('navMenu');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navigation click handler
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('href').substring(1);
+                if (pages.includes(page)) {
+                    navigateTo(page);
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Main navigation function
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+
+            // Show selected page
+            const selectedPage = document.getElementById(page);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // Update nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${page}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Update URL hash
+            window.location.hash = page || 'home';
+        }
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const page = window.location.hash.substring(1) || 'home';
+            if (pages.includes(page)) {
+                navigateTo(page);
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            const initialPage = window.location.hash.substring(1) || 'home';
+            if (pages.includes(initialPage)) {
+                navigateTo(initialPage);
+            }
+        });
+
+        // FAQ Accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items in the same section
+                const siblingsSection = item.parentElement;
+                siblingsSection.querySelectorAll('.faq-item').forEach(sibling => {
+                    if (sibling !== item && sibling.classList.contains('active')) {
+                        sibling.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
