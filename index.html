@@ -139,6 +139,9 @@
         .app-card:nth-child(3)::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
         .app-card:nth-child(4)::before { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
         .app-card:nth-child(5)::before { background: linear-gradient(90deg, #ec4899, #f43f5e); }
+        .app-card:nth-child(6)::before { background: linear-gradient(90deg, #f97316, #eab308); }
+        .app-card:nth-child(7)::before { background: linear-gradient(90deg, #14b8a6, #06b6d4); }
+        .app-card:nth-child(8)::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
 
         .app-card:hover {
             transform: translateY(-8px);
@@ -193,6 +196,11 @@
         .badge-free {
             background: rgba(16, 185, 129, 0.15);
             color: #34d399;
+        }
+
+        .badge-paid {
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
         }
 
         .badge-coming {
@@ -311,6 +319,9 @@
         .app-card:nth-child(3) { animation-delay: 0.3s; }
         .app-card:nth-child(4) { animation-delay: 0.4s; }
         .app-card:nth-child(5) { animation-delay: 0.5s; }
+        .app-card:nth-child(6) { animation-delay: 0.6s; }
+        .app-card:nth-child(7) { animation-delay: 0.7s; }
+        .app-card:nth-child(8) { animation-delay: 0.8s; }
 
         @keyframes fadeInUp {
             to {
@@ -376,13 +387,13 @@
                     <span class="feature-tag">Haptic Feedback</span>
                 </div>
                 <div class="app-links">
-                    <a href="https://play.google.com/store/apps/details?id=com.michaelmcgill.customintervaltimer" class="store-btn store-btn-android" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.652-2.302 2.652-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                        Google Play
-                    </a>
                     <a href="https://apps.apple.com/app/id6759209042" class="store-btn store-btn-apple" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                         App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.michaelmcgill.customintervaltimer" class="store-btn store-btn-android" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.652-2.302 2.652-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
                     </a>
                 </div>
             </div>
@@ -463,6 +474,106 @@
                 </div>
                 <div class="app-links">
                     <a href="https://apps.apple.com/app/id6760320153" class="store-btn store-btn-apple" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- Alarmony -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c0/65/6c/c0656ce1-7d75-7558-8286-961b2836830f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Alarmony icon">
+                    <div class="app-title-group">
+                        <div class="app-name">Alarmony</div>
+                        <div class="app-subtitle">Wake Up to Music, Podcasts &amp; Radio</div>
+                        <span class="app-badge badge-free">Free</span>
+                    </div>
+                </div>
+                <p class="app-description">Wake up to the music, podcasts, and radio you love. Set a song to start your morning, then automatically transition to a podcast or radio station — all from one alarm. No music subscription required.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Music Alarms</span>
+                    <span class="feature-tag">Podcasts</span>
+                    <span class="feature-tag">Radio</span>
+                    <span class="feature-tag">Alarm Chaining</span>
+                </div>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/app/id6758636126" class="store-btn store-btn-apple" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- Math Rivals -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e0/3f/6c/e03f6c6e-84bd-eae0-36ca-bce03641297a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Math Rivals icon">
+                    <div class="app-title-group">
+                        <div class="app-name">Math Rivals</div>
+                        <div class="app-subtitle">Fun Math Practice for Kids</div>
+                        <span class="app-badge badge-free">Free</span>
+                    </div>
+                </div>
+                <p class="app-description">Turns daily math practice into friendly competition. Built for elementary and middle schoolers, it combines quick drills, weekly leaderboards, and visual tools that make tough concepts click.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Weekly Leaderboards</span>
+                    <span class="feature-tag">Visual Tools</span>
+                    <span class="feature-tag">Quick Drills</span>
+                    <span class="feature-tag">Kids</span>
+                </div>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/app/id6760370723" class="store-btn store-btn-apple" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- Internet Speed Test Atlas -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a1/3a/fc/a13afc15-812e-9e95-2a66-a6a6d78410c2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Internet Speed Test Atlas icon">
+                    <div class="app-title-group">
+                        <div class="app-name">Internet Speed Test Atlas</div>
+                        <div class="app-subtitle">Test, Compare &amp; Find Wi-Fi</div>
+                        <span class="app-badge badge-free">Free</span>
+                    </div>
+                </div>
+                <p class="app-description">The no-nonsense way to test your internet, see how it stacks up locally, and find public Wi-Fi wherever you go. Real-time download, upload, ping, and jitter against Cloudflare's worldwide network.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Speed Testing</span>
+                    <span class="feature-tag">Wi-Fi Finder</span>
+                    <span class="feature-tag">Community Map</span>
+                    <span class="feature-tag">ISP Detection</span>
+                </div>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/app/id6765497665" class="store-btn store-btn-apple" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pro Countdown -->
+            <div class="app-card">
+                <div class="app-header">
+                    <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/58/a6/5e/58a65ee0-d8ae-1449-fe03-47d349009bdf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Pro Countdown icon">
+                    <div class="app-title-group">
+                        <div class="app-name">Pro Countdown</div>
+                        <div class="app-subtitle">Count Down to What Matters</div>
+                        <span class="app-badge badge-free">Free</span>
+                    </div>
+                </div>
+                <p class="app-description">The most beautiful, modern way to count down to the moments that matter — birthdays, trips, weddings, holidays, deadlines, and big life events. Designed for iOS 18+ with Lock Screen widgets and Live Activities.</p>
+                <div class="app-features">
+                    <span class="feature-tag">Lock Screen Widgets</span>
+                    <span class="feature-tag">Live Activities</span>
+                    <span class="feature-tag">Dynamic Island</span>
+                    <span class="feature-tag">Apple Watch</span>
+                </div>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/app/id6764467912" class="store-btn store-btn-apple" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                         App Store
                     </a>
