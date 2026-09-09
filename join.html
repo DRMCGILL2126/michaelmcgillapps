@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join KidBank - Michael McGill Apps</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        h1 { color: #fff; margin-top: 40px; }
+        p { color: #aaa; }
+        .code {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #d4af37;
+            margin: 24px 0;
+            font-family: ui-monospace, Menlo, monospace;
+        }
+        .card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            background: #d4af37;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a { color: #007AFF; }
+    </style>
+</head>
+<body>
+    <h1>🏦 Join KidBank</h1>
+    <p id="intro">Opening the app…</p>
+
+    <div class="card">
+        <p>Your invite code:</p>
+        <div class="code" id="code">------</div>
+        <p id="fallback-message">
+            If KidBank didn't open automatically, make sure it's installed,
+            then open it and enter this code on the "Join a Family" screen.
+        </p>
+        <!--
+          TODO once KidBank ships on the App Store: replace this with
+          <a class="btn" href="https://apps.apple.com/app/idXXXXXXXXX">Download KidBank</a>
+        -->
+        <p><strong>KidBank isn't on the App Store yet.</strong> Ask whoever
+        sent you this link to help you install the test version on your
+        iPhone, then tap this link again.</p>
+    </div>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var code = (params.get('code') || '').toUpperCase().slice(0, 6);
+        if (code) {
+            document.getElementById('code').textContent = code;
+            // Universal Links open the app directly when it's installed —
+            // this page only renders as a fallback. Still attempt the
+            // custom-scheme link as a second chance (e.g. if Associated
+            // Domains verification hasn't propagated yet), then give up
+            // and just show the code.
+            window.location.replace('kidbank://join/' + code);
+        } else {
+            document.getElementById('intro').textContent = 'Missing invite code.';
+        }
+    </script>
+</body>
+</html>
