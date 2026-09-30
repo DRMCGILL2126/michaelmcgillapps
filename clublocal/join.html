@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join · Townimo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0e1a1f;
+      --mint: #3ddc97;
+      --sand: #f3f0ea;
+      --coral: #ff6b4a;
+      --mist: #e7eef0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--sand);
+      color: var(--ink);
+      padding: 28px 18px 48px;
+    }
+    .card {
+      max-width: 440px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 22px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 40px rgba(14, 26, 31, 0.08);
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1fa971;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 2rem;
+      margin: 8px 0 6px;
+    }
+    .meta { color: #5a6b73; margin-bottom: 18px; }
+    .price {
+      display: inline-block;
+      background: var(--mist);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    p { line-height: 1.55; color: #1a2c33; }
+    .actions { display: grid; gap: 10px; margin-top: 24px; }
+    a.button, button {
+      appearance: none;
+      border: 0;
+      border-radius: 14px;
+      padding: 15px 16px;
+      font: inherit;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .primary { background: var(--ink); color: white; }
+    .secondary { background: var(--mint); color: var(--ink); }
+    .hint { margin-top: 16px; font-size: 13px; color: #5a6b73; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow" id="category">Local club</div>
+    <h1 id="businessName">Loading…</h1>
+    <div class="meta" id="planName"></div>
+    <div class="price" id="price" hidden></div>
+    <p id="summary">Pulling up this shop’s subscription…</p>
+    <div class="actions">
+      <a class="button primary" id="openApp" href="#">Open in Townimo</a>
+      <a class="button secondary" id="firebaseJoin" href="#">Open live join page</a>
+    </div>
+    <p class="hint">Scan stickers use the Townimo join URL. This page mirrors it on michaelmcgillapps.com.</p>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const slug = params.get("b") || params.get("slug") || "harbor-brew";
+    // Outbound scheme stays clublocal:// for production QR / Stripe compatibility; app also accepts townimo://.
+    const deepLink = `clublocal://j/${slug}`;
+    const firebaseJoin = `https://townimo.com/j/${slug}`;
+    document.getElementById("openApp").href = deepLink;
+    document.getElementById("firebaseJoin").href = firebaseJoin;
+
+    const demo = {
+      "harbor-brew": {
+        category: "Coffee",
+        businessName: "Harbor Brew",
+        planName: "Sip Club Basic · Extra",
+        price: "From $10.99/mo",
+        summary: "Basic covers latte & brew. Extra adds mocha — priced into the plan, not at pickup."
+      },
+      "rinse-ride": {
+        category: "Car wash",
+        businessName: "Rinse & Ride",
+        planName: "Clean Pass",
+        price: "$24.99/mo",
+        summary: "4 exterior washes each month."
+      },
+      "pulse-yoga": {
+        category: "Fitness",
+        businessName: "Pulse Yoga",
+        planName: "Studio Access",
+        price: "$89/mo",
+        summary: "Open classes."
+      }
+    };
+
+    const data = demo[slug];
+    if (data) {
+      document.getElementById("category").textContent = data.category;
+      document.getElementById("businessName").textContent = data.businessName;
+      document.getElementById("planName").textContent = data.planName;
+      const price = document.getElementById("price");
+      price.hidden = false;
+      price.textContent = data.price;
+      document.getElementById("summary").textContent = data.summary;
+      document.title = `Join ${data.businessName} · Townimo`;
+    } else {
+      document.getElementById("businessName").textContent = slug;
+      document.getElementById("summary").textContent =
+        "Open the live join page or the Townimo app to see this club’s plan.";
+    }
+
+    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      setTimeout(() => { window.location = deepLink; }, 500);
+    }
+  </script>
+</body>
+</html>

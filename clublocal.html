@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Townimo · Michael McGill Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0e1a1f;
+      --mint: #3ddc97;
+      --sand: #f3f0ea;
+      --coral: #ff6b4a;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--sand);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .hero {
+      background:
+        radial-gradient(circle at 85% 15%, rgba(61, 220, 151, 0.35), transparent 40%),
+        linear-gradient(155deg, #0e1a1f, #143d3a 60%, #0e1a1f);
+      color: #fff;
+      padding: 72px 24px 64px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.6rem, 7vw, 3.6rem);
+      margin-bottom: 14px;
+    }
+    .lead {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      max-width: 34rem;
+    }
+    .content { padding: 48px 24px 80px; }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(14, 26, 31, 0.06);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    p { line-height: 1.6; color: #1a2c33; margin-bottom: 10px; }
+    .cta {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 14px 18px;
+      border-radius: 14px;
+    }
+    .cta.secondary { background: var(--mint); color: var(--ink); margin-left: 8px; }
+    .back { display: inline-block; margin-bottom: 20px; color: #5a6b73; text-decoration: none; }
+    code {
+      background: #e7eef0;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Coming soon · iOS</div>
+      <h1>Townimo</h1>
+      <p class="lead">A marketplace for local subscription clubs — coffee sip clubs, car washes, studios, and more. Businesses create plans; members discover nearby and redeem with a pass.</p>
+    </div>
+  </section>
+  <section class="content">
+    <div class="wrap">
+      <a class="back" href="index.html">← Michael McGill Apps</a>
+      <div class="card">
+        <h2>For customers</h2>
+        <p>Browse subscriptions near you, subscribe in seconds, and keep every membership pass in one wallet. Order or claim what’s covered when you want to pick up.</p>
+      </div>
+      <div class="card">
+        <h2>For businesses</h2>
+        <p>Create any plan you want, show a counter QR for signup, and get paid monthly through Stripe Connect. Townimo takes a small percent of subscription revenue.</p>
+        <p>Sticker / QR join links look like:<br /><code>https://townimo.com/j/your-shop</code></p>
+        <a class="cta" href="https://townimo.com/j/harbor-brew">Try a sample join link</a>
+        <a class="cta secondary" href="clublocal/join.html?b=harbor-brew">Join page on this site</a>
+      </div>
+      <div class="card">
+        <h2>Support</h2>
+        <p>Questions about Townimo? <a href="https://townimo.com/support">Contact support</a>.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
