@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.michaelmcgillapps.kidbank",
+      "sha256_cert_fingerprints": [
+        "A7:2F:B8:7B:F8:59:80:88:3A:7F:90:41:8A:C0:2F:E8:AA:41:26:17:21:C9:64:5D:09:3E:2F:57:6A:A1:D5:F1",
+        "6B:4C:92:D5:7B:C0:61:C8:EA:7C:40:D1:59:07:FB:01:3C:38:CF:A9:91:2E:FA:9B:77:79:E1:91:EB:63:12:E4"
+      ]
+    }
+  }
+]
